@@ -1,15 +1,25 @@
-import React from 'react'
-import './RenderField.scss';
+import React, { Fragment } from "react";
+import "./RenderField.scss";
 
-const RenderField = ({field, form: {errors, touched}, ...props}) => {
-    console.log(errors.firstName && touched);
-    return (
-       <input 
-            className="my-input" 
-            {...field} 
-            {...props} 
-        />
-    );
-}
+const RenderField = ({
+  field,
+  type,
+  placeholder,
+  form: { touched, errors },
+}) => {
+  return (
+    <Fragment>
+      <input
+        className="my-input"
+        type={type}
+        placeholder={placeholder}
+        {...field}
+      />
+      {touched[field.name] && errors[field.name] && (
+        <div className="error">{errors[field.name]}</div>
+      )}
+    </Fragment>
+  );
+};
 
 export default RenderField;
