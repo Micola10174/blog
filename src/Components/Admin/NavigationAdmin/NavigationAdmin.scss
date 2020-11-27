@@ -5,22 +5,30 @@
   left: 0;
   position: fixed;
   top: 0;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  transition: transform 0.3s ease-in-out;
+  transition: transform ease-in-out;
+  z-index: 2;
   &.active {
     transform: translateX(0%);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    background: rgba(0, 0, 0, .3);
+    transition: transform ease-in-out;
   }
   @media screen and (max-width: 768px) {
     width: 100%;
     transform: translateX(-100%);
     box-shadow: none;
-    background: rgba(0, 0, 0, 0.6);
   }
   .wrapper-sidebar {
     background-color: #343a40;
+    transition: transform .3s ease-in-out;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    &.active{
+      transform: translateX(0%);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      transition: transform .3s ease-in-out;
+    }
     @media screen and (max-width: 768px) {
       width: 250px;
+      transform: translateX(-100%);
     }
     .brand-link {
       width: 250px;

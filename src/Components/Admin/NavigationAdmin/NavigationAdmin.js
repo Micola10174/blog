@@ -5,7 +5,7 @@ import "./NavigationAdmin.scss";
 const NavigationAdmin = ({ isActiveMenu, handleCloseMenu }) => {
   return (
     <aside className={isActiveMenu ? "admin-sidebar active" : "admin-sidebar"} onClick={handleCloseMenu}>
-      <div className="wrapper-sidebar">
+      <div className={isActiveMenu ? "wrapper-sidebar active" : "wrapper-sidebar"} >
         <NavLink to="#" className="brand-link">
           <span>AdminLTE 3</span>
         </NavLink>

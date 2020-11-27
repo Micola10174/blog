@@ -8,7 +8,7 @@ const RenderField = ({
   form: { touched, errors },
 }) => {
   return (
-    <Fragment>
+    <div className="wrapper-input">
       <input
         className="my-input"
         type={type}
@@ -18,7 +18,7 @@ const RenderField = ({
       {touched[field.name] && errors[field.name] && (
         <div className="error">{errors[field.name]}</div>
       )}
-    </Fragment>
+    </div>
   );
 };
 
