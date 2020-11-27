@@ -1,0 +1,40 @@
+.wrapper-admin-post {
+  padding: 0 10px;
+  .panels-control {
+    // background: #999999;
+    @media screen and (max-width: 869px){
+        display: flex;
+        justify-content: space-between;
+    }
+    button {
+      margin-right: 10px;
+      background-color: #d3d3d3;
+      border: none;
+      height: 40px;
+      color: #ffffff;
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      outline: none;
+      cursor: pointer;
+      max-width: 150px;
+      width: 100%;
+      &:hover {
+        box-shadow: 0 2px 17px 0 rgba(0, 0, 0, 0.2),
+          0 6px 10px 0 rgba(0, 0, 0, 0.19);
+        transition: fade 1s;
+      }
+      &.blue-info {
+        background-color: #33b5e5;
+      }
+      &.green-sucess {
+        background-color: #00c851;
+      }
+      @media screen and (max-width: 869px){
+        margin-right: 0;
+    }
+    }
+  }
+  h1 {
+    margin-top: 50px;
+  }
+}

@@ -1,0 +1,44 @@
+.admin-header{
+    border-bottom: 1px solid #dee2e6;
+    padding: .5rem .5rem;
+    margin-left: 250px;
+    height: 57px;
+    transition: .3s;
+    @media screen and (max-width: 768px){
+        margin-left: 0;
+    }
+    .main-header{
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 10px;
+        @media screen and (max-width: 768px){
+            justify-content: space-between;
+        }
+        .burgger{
+            cursor: pointer;
+            display: none;
+            @media screen and (max-width: 768px){
+                display: block;
+            }
+            .line{
+                width: 20px;
+                height: 3px;
+                margin: 3px 0;
+                background: rgba(0,0,0,.5);
+            }
+        }
+        .link-my-site{
+            a{
+                text-transform: uppercase;
+                padding: 5px 15px;
+                background: #9999;
+                border-radius: 2px;
+                color: #fff;
+                color: pointer;
+            }
+        }
+    }
+}
