@@ -9,7 +9,7 @@ import "./FormPost.scss";
 
 
 const PostSchema = Yup.object().shape({
-  firstName: Yup.string()
+  title: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
@@ -17,21 +17,29 @@ const PostSchema = Yup.object().shape({
     .min(100, "Too Short!")
     .max(300, "Too Long!")
     .required("Required"),
-  email: Yup.string().email("Invalid email").required("Required"),
+  // email: Yup.string().email("Invalid email").required("Required"),
 });
 
 
 
 const FormPost = () => {
 
+  const options = [
+    { value: 'Food', label: 'Food' },
+    { value: 'Being Fabulous', label: 'Being Fabulous' },
+    { value: 'Ken Wheeler', label: 'Ken Wheeler' },
+    { value: 'ReasonML', label: 'ReasonML' },
+    { value: 'Unicorns', label: 'Unicorns' },
+    { value: 'Kittens', label: 'Kittens' },
+  ];
   
 
   return (
     <Formik
       initialValues={{
-        firstName: "",
-        lastName: "",
-        email: "",
+        title: "",
+        description: "",
+        location: "Food"
       }}
       validationSchema={PostSchema}
       onSubmit={async (values) => {
@@ -42,7 +50,7 @@ const FormPost = () => {
       <Form>
         <Field
           type="text"
-          name="firstName"
+          name="title"
           placeholder="Title"
           component={RenderField}
         />
@@ -52,8 +60,8 @@ const FormPost = () => {
           component={ReanderTextArea}
         />
         <Field
-           id="location"
            name="location"
+           options={options}
            component={RenderSelect}
         />
         <button type="submit">Submit</button>
