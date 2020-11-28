@@ -20,7 +20,12 @@ const PostSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
 });
 
+
+
 const FormPost = () => {
+
+  
+
   return (
     <Formik
       initialValues={{
@@ -50,21 +55,7 @@ const FormPost = () => {
            id="location"
            name="location"
            component={RenderSelect}
-        >
-          <option value="hide">-- Month --</option>
-          <option value="january" rel="icon-temperature">January</option>
-          <option value="february">February</option>
-          <option value="march">March</option>
-          <option value="april">April</option>
-          <option value="may">May</option>
-          <option value="june">June</option>
-          <option value="july">July</option>
-          <option value="august">August</option>
-          <option value="september">September</option>
-          <option value="october">October</option>
-          <option value="november">November</option>
-          <option value="december">December</option>
-        </Field>
+        />
         <button type="submit">Submit</button>
       </Form>
     </Formik>

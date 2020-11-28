@@ -1,5 +1,7 @@
 .wrapper-admin-post {
   padding: 0 10px;
+  max-width: 1140px;
+  margin: auto;
   .panels-control {
     // background: #999999;
     @media screen and (max-width: 869px){
@@ -35,6 +37,8 @@
     }
   }
   h1 {
-    margin-top: 50px;
+    margin: 30px 0;
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
   }
 }
