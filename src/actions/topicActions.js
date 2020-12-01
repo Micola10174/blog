@@ -12,3 +12,31 @@ export function getTopics() {
         }
     };
 }
+
+export function postTopics(data) {
+    console.log(data);
+    return {
+        type: types.POST_CREATE_TOPIC,
+        payload: {
+            client: 'default',
+            request: {
+                url: `/topic`,
+                method: "post",
+                data
+            }
+        }
+    };
+}
+
+export function deleteTopic(id) {
+    return {
+        type: types.DELETE_TOPIC,
+        payload: {
+            client: 'default',
+            request: {
+                url: `/topic/:${id}`,
+                method: "delete",
+            }
+        }
+    };
+}
