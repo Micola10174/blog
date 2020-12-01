@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import RenderField from "../../../HelperComponents/RenderField/RenderField";
@@ -14,40 +14,45 @@ const PostSchema = Yup.object().shape({
     .max(50, "Too Long!")
     .required("Required"),
   description: Yup.string()
-    .min(100, "Too Short!")
+    .min(50, "Too Short!")
     .max(300, "Too Long!")
     .required("Required"),
-  // email: Yup.string().email("Invalid email").required("Required"),
+  topic: Yup.string()
+    .required("Required")
 });
 
 
 
 const FormPost = () => {
+  const [topics, setTopics] = useState("")
 
   const options = [
-    { value: 'Food', label: 'Food' },
-    { value: 'Being Fabulous', label: 'Being Fabulous' },
-    { value: 'Ken Wheeler', label: 'Ken Wheeler' },
-    { value: 'ReasonML', label: 'ReasonML' },
-    { value: 'Unicorns', label: 'Unicorns' },
-    { value: 'Kittens', label: 'Kittens' },
-  ];
-  
+    { value: '1', label: 'Food' },
+    { value: '2', label: 'Being Fabulous' },
+    { value: '3', label: 'Ken Wheeler' },
+    { value: '4', label: 'ReasonML' },
+    { value: '5', label: 'Unicorns' },
+    { value: '6', label: 'Kittens' },
+  ]
+
+
+  const onSubmit = (value, {resetForm}) => {
+    console.log(value)
+    resetForm()
+    // setOptions("")
+  }
 
   return (
     <Formik
       initialValues={{
         title: "",
         description: "",
-        location: "Food"
+        topic: { value: '6', label: 'Kittens' }
       }}
       validationSchema={PostSchema}
-      onSubmit={async (values) => {
-        await new Promise((r) => setTimeout(r, 500));
-        alert(JSON.stringify(values, null, 2));
-      }}
+      onSubmit={onSubmit}
     >
-      <Form>
+      <Form className="form-post">
         <Field
           type="text"
           name="title"
@@ -60,9 +65,10 @@ const FormPost = () => {
           component={ReanderTextArea}
         />
         <Field
-           name="location"
+           name="topic"
            options={options}
            component={RenderSelect}
+           placeholder="Select topics"
         />
         <button type="submit">Submit</button>
       </Form>

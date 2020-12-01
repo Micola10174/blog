@@ -18,16 +18,18 @@ const customStyles = {
       }),
   }
 
-const RenderSelect = ({field, options, form}) => {
+const RenderSelect = ({field, options, form, placeholder}) => {
+    console.log(field.value)
     return (
         <div className="wrapper-select">
             <Select 
                 width="320px"
                 name={field.name} 
                 options={options} 
-                value={options ? options.find(option => option.value === field.value) : ''} 
+                value={options ? options.find(option => option.value === field.value) : field.value} 
                 onChange={(option) => form.setFieldValue(field.name, option.value)}
                 styles={customStyles}
+                placeholder={placeholder}
             />
         </div>
     );
