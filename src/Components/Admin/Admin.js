@@ -25,8 +25,7 @@ class Admin extends Component{
 
     render(){
         const { isActiveMenu } = this.state;
-        const { match } = this.props
-        console.log(this.props);
+        const { match } = this.props;
         return(
             <Fragment>
                 <HeaderAdmin handleOpenMenu={this.handleOpenMenu} />

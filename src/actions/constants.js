@@ -8,3 +8,8 @@ export const POST_CREATE_POST_FAIL = 'POST_CREATE_POST_FAIL';
 export const GET_POST = 'GET_POST';
 export const GET_POST_SUCCESS = 'GET_POST_SUCCESS';
 export const GET_POST_FAIL = 'GET_POST_FAIL';
+
+
+export const GET_TOPIC = 'GET_TOPIC';
+export const GET_TOPIC_SUCCESS = 'GET_TOPIC_SUCCESS';
+export const GET_TOPIC_FAIL = 'GET_TOPIC_FAIL';

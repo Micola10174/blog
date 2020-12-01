@@ -1,13 +1,12 @@
 import * as types from './constants';
 
 export function addPost(data) {
-    console.log(data)
     return {
         type: types.POST_CREATE_POST,
         payload: {
             client: 'default',
             request: {
-                url: `/actors`,
+                url: `/post`,
                 method: "post",
                 data
             }

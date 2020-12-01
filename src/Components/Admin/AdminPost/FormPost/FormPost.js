@@ -23,17 +23,16 @@ const PostSchema = Yup.object().shape({
 
 
 
-const FormPost = () => {
-  const [topics, setTopics] = useState("")
+const FormPost = ({topics}) => {
+  console.log(topics)
 
-  const options = [
-    { value: '1', label: 'Food' },
-    { value: '2', label: 'Being Fabulous' },
-    { value: '3', label: 'Ken Wheeler' },
-    { value: '4', label: 'ReasonML' },
-    { value: '5', label: 'Unicorns' },
-    { value: '6', label: 'Kittens' },
-  ]
+  // {idcategories: 1, title: "Activities"}
+  const options = topics.map(topic => {
+    return {
+      value: topic.idcategories,
+      label: topic.title
+    }
+  })
 
 
   const onSubmit = (value, {resetForm}) => {
