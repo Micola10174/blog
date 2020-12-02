@@ -34,8 +34,23 @@ export function deleteTopic(id) {
         payload: {
             client: 'default',
             request: {
-                url: `/topic/:${id}`,
+                url: `/topic/${id}`,
                 method: "delete",
+            }
+        }
+    };
+}
+
+export function updateTopic({id, data}) {
+    console.log(data);
+    return {
+        type: types.PUT_TOPIC,
+        payload: {
+            client: 'default',
+            request: {
+                url: `/topic/${id}`,
+                method: "put",
+                data
             }
         }
     };

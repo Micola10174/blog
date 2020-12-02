@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import FormTopic from "./FormTopic/FormTopic";
 import { connect } from "react-redux";
-import { postTopics, getTopics, deleteTopic } from "../../../actions/topicActions";
+import { postTopics, getTopics, deleteTopic, updateTopic } from "../../../actions/topicActions";
 import imageEdit from "../../../assets/images/edit.png";
+import imageDelete from '../../../assets/images/delete.png';
 import "./AdminTopic.scss";
 
 class AdminTopic extends Component {
   state = {
     page: "1",
+    editEl: null
   };
 
   componentDidMount() {
@@ -18,7 +20,12 @@ class AdminTopic extends Component {
   handleOpenForm = (pageNum) => {
     const { getTopics } = this.props;
     getTopics();
-    this.setState({ page: pageNum });
+    if(pageNum === '1'){
+        this.setState({ page: pageNum, editEl: null });
+    }else{
+        this.setState({ page: pageNum });
+    }
+    
   };
 
   handleDeleteToic = id => {
@@ -26,12 +33,14 @@ class AdminTopic extends Component {
       deleteTopic(id)
   }
 
+  handleEdit = el => {
+    //   this.setState({isEdit: true, page: '2'})
+    this.setState({editEl: el, page: '2'})
+  }
+
   render() {
-    const {
-      postTopics,
-      topics: { topic },
-    } = this.props;
-    const { page } = this.state;
+    const {postTopics, updateTopic, topics: { topic } } = this.props;
+    const { page, editEl } = this.state;
     return (
       <div className="wrapper-admin-topic">
         <div className="panels-control">
@@ -68,7 +77,10 @@ class AdminTopic extends Component {
                     </div>
                     <div className="list-collections__control">
                       <li className="list-collections__edit">
-                        <img src={imageEdit} onClick={() => this.handleDeleteToic(el.idcategories)} />
+                        <img src={imageEdit}  onClick={() => this.handleEdit(el)} />
+                      </li>
+                      <li className="list-collections__edit">
+                        <img src={imageDelete} onClick={() => this.handleDeleteToic(el.idcategories)} />
                       </li>
                     </div>
                   </div>
@@ -77,7 +89,7 @@ class AdminTopic extends Component {
             </ul>
           </div>
         ) : (
-          <FormTopic postTopics={postTopics} handleOpenForm={this.handleOpenForm}/>
+          <FormTopic postTopics={postTopics} updateTopic={updateTopic} handleOpenForm={this.handleOpenForm} editEl={editEl}/>
         )}
       </div>
     );
@@ -92,7 +104,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   postTopics,
   getTopics,
-  deleteTopic
+  deleteTopic,
+  updateTopic
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminTopic);

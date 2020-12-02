@@ -76,6 +76,7 @@
             }
           }
           .list-collections__control {
+              display: flex;
             .list-collections__edit {
               width: 30px;
               height: 30px;
@@ -86,6 +87,14 @@
                 width: 25px;
                 height: 25px;
               }
+            }
+            li:first-child{
+                background: lightgreen;
+                cursor: pointer;
+            }
+            li:last-child{
+                background: #FF5159;
+                cursor: pointer;
             }
           }
         }

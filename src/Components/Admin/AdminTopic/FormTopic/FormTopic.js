@@ -15,20 +15,32 @@ const PostSchema = Yup.object().shape({
 
 
 
-const FormTopic = ({postTopics, handleOpenForm}) => {
+const FormTopic = ({postTopics, updateTopic, handleOpenForm, editEl}) => {
   const onSubmit = (value, {resetForm}) => {
-    postTopics(value).then(res => {
-      if(res.payload && res.payload.status === 201){
-         resetForm()
-         handleOpenForm('1')
-      }
-    })
+    if(editEl === null){
+      postTopics(value).then(res => {
+        if(res.payload && res.payload.status === 201){
+           resetForm()
+           handleOpenForm('1')
+        }
+      })
+    }else{
+      updateTopic({id: editEl.idcategories, data: value }).then(res => {
+        if(res.payload && res.payload.status === 200){
+          resetForm()
+          handleOpenForm('1')
+       }
+      })
+    }
+
   }
+  
+  let initialValueTitle = editEl ? editEl.title : ""
 
   return (
     <Formik
       initialValues={{
-        title: "",
+        title: initialValueTitle
       }}
       validationSchema={PostSchema}
       onSubmit={onSubmit}
